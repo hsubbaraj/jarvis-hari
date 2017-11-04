@@ -1,0 +1,39 @@
+digraph G {
+	
+	pg_statistics_csv [shape=box, color=green];
+	data_loader [shape=oval, color=red];
+	pg_data [shape=box, color=blue];
+	data_dim_reducer [shape=oval, color=red];
+	reduced_components_pkl [shape=box, color=blue];
+	reduced_components_txt [shape=box, color=blue];
+	save_pca_var_code [shape=box, color=purple];
+	reduced_pg_data [shape=box, color=blue];
+	cluster_action [shape=oval, color=red];
+	cluster_data [shape=box, color=blue];
+	data_visualizer [shape=oval, color=red];
+
+	visuals1 [shape=box, color=blue];
+	visuals2 [shape=box, color=blue];
+	merge [shape=oval, color=red];
+	final_artifact [shape=box, color=blue];
+
+
+	pg_statistics_csv -> data_loader;
+	data_loader -> pg_data;
+	pg_data -> data_dim_reducer;
+	pg_data -> data_visualizer;
+	data_dim_reducer -> reduced_pg_data;
+	data_dim_reducer -> reduced_components_pkl;
+	data_dim_reducer -> reduced_components_txt;
+	data_dim_reducer -> save_pca_var_code;
+	reduced_pg_data -> cluster_action;
+	pg_data -> cluster_action;
+	cluster_action -> cluster_data;
+	cluster_data -> data_visualizer;
+	data_visualizer -> visuals1;
+	data_visualizer -> visuals2;
+	visuals1 -> merge;
+	visuals2 -> merge;
+	merge -> final_artifact;
+
+}
